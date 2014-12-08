@@ -1,0 +1,50 @@
+/**
+ * Basic "Hello World" application
+ */
+object Hello extends App{
+  println("Hello, world!")
+}
+
+/**
+ * Basic boolean operations
+ */
+object Booleans {
+  def or(x:Boolean,y:Boolean)=
+    if (x) true else y
+
+  def and(x:Boolean, y:Boolean)=
+    if (x) y else false
+
+  def not(x:Boolean)=
+  !x
+
+  def xor(x:Boolean,y:Boolean)=
+  if (or(and(x,y),not(or(x,y)))) false else true
+
+
+
+
+}
+
+/**
+ * Computing square root based on Newton's technique
+ */
+object Newton {
+
+  def sqrt(x:Double)= {
+    def sqrtIter(guess: Double): Double =
+      if (isOk(guess)) guess
+      else sqrtIter(improve(guess))
+
+    def abs(x: Double) =
+      if (x <= 0) -x else x
+
+    def isOk(guess: Double) =
+      abs(guess * guess - x) <= 0.001
+
+    def improve(guess: Double) =
+      (guess + x / guess) / 2
+
+    sqrtIter(1.0)
+  }
+}
